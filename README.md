@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # Cloudlet — Cloud-Based E-Learning Platform
 
 A working implementation of **Option A** for the Cloud Computing group project: a scalable
@@ -165,3 +166,6 @@ curl https://your-deployed-url.com/api/courses
 
 For a class project demo (low traffic), this stays entirely within free-tier limits —
 put this table in your Part 2 cost estimation section.
+=======
+# cloudlet-elearning-platform
+>>>>>>> 5f2f0aab80aba83846cbdc5e1175c41b698431f3
