@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Cloudlet — Cloud E-Learning Platform</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+<header class="topbar">
+  <div class="wrap topbar-inner">
+    <div class="brand">Cloudlet</div>
+    <nav id="nav-auth"></nav>
+  </div>
+</header>
+
+<main class="wrap">
+
+  <section id="view-catalog" class="view">
+    <h1 class="page-title">Course catalog</h1>
+    <p class="page-sub">Browse courses served from cloud object storage. Enroll to unlock the assessment.</p>
+    <div id="course-list" class="course-grid"></div>
+  </section>
+
+  <section id="view-course" class="view" hidden>
+    <button class="link-back" onclick="showCatalog()">&larr; Back to catalog</button>
+    <h1 id="course-title" class="page-title"></h1>
+    <p id="course-desc" class="page-sub"></p>
+    <div class="video-frame" id="video-frame">
+      <div class="video-placeholder">
+        <span>Course video — streamed from S3 / CloudFront</span>
+      </div>
+    </div>
+    <div id="instructor-upload"></div>
+    <div id="enroll-panel"></div>
+    <div id="quiz-panel"></div>
+  </section>
+
+  <section id="view-auth" class="view" hidden>
+    <div class="auth-card">
+      <div class="auth-tabs">
+        <button class="tab active" data-tab="login" onclick="switchTab('login')">Log in</button>
+        <button class="tab" data-tab="register" onclick="switchTab('register')">Register</button>
+      </div>
+
+      <form id="form-login" onsubmit="return handleLogin(event)">
+        <label>Email <input type="email" id="login-email" required></label>
+        <label>Password <input type="password" id="login-password" required></label>
+        <button class="btn-primary" type="submit">Log in</button>
+        <p class="hint">Demo instructor: instructor@demo.edu / password123</p>
+      </form>
+
+      <form id="form-register" hidden onsubmit="return handleRegister(event)">
+        <label>Name <input type="text" id="reg-name" required></label>
+        <label>Email <input type="email" id="reg-email" required></label>
+        <label>Password <input type="password" id="reg-password" required minlength="6"></label>
+        <label>Role
+          <select id="reg-role">
+            <option value="student">Student</option>
+            <option value="instructor">Instructor</option>
+          </select>
+        </label>
+        <button class="btn-primary" type="submit">Create account</button>
+      </form>
+
+      <p id="auth-error" class="error" hidden></p>
+    </div>
+  </section>
+
+</main>
+
+<div id="toast" class="toast" hidden></div>
+
+<script src="config.js"></script>
+<script src="app.js"></script>
+</body>
+</html>
