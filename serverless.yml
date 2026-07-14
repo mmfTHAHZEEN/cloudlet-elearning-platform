@@ -1,0 +1,48 @@
+service: elearning-api
+
+frameworkVersion: '3'
+
+provider:
+  name: aws
+  runtime: nodejs18.x
+  region: us-east-1
+  stage: ${opt:stage, 'dev'}
+  environment:
+    JWT_SECRET: ${env:JWT_SECRET, 'change-this-in-production'}
+  # Least-privilege IAM (Part 6 - IAM). Add DynamoDB permissions here once
+  # you swap data/store.js over to real DynamoDB calls, e.g.:
+  # iam:
+  #   role:
+  #     statements:
+  #       - Effect: Allow
+  #         Action:
+  #           - dynamodb:GetItem
+  #           - dynamodb:PutItem
+  #           - dynamodb:Query
+  #           - dynamodb:Scan
+  #         Resource: 'arn:aws:dynamodb:${self:provider.region}:*:table/*'
+
+functions:
+  api:
+    handler: lambda.handler
+    events:
+      - httpApi: '*'          # catch-all route, Express handles internal routing
+    memorySize: 256
+    timeout: 10
+
+plugins: []
+
+# Deploy with:
+#   npm install
+#   npx serverless deploy --stage prod
+#
+# This provisions, automatically:
+#   - An AWS Lambda function running this Express app
+#   - An HTTP API Gateway in front of it (this is your live public URL)
+#   - CloudWatch Logs for every request (satisfies Part 6 monitoring/logging)
+#   - IAM execution role scoped to just this function (satisfies Part 6 IAM)
+#
+# Auto-scaling is automatic and built into Lambda: AWS spins up as many
+# concurrent execution environments as needed with zero configuration -
+# this is what you'd screenshot/demonstrate for the "auto-scaling" and
+# "event-triggered execution" requirements in Part 2 and Part 5.

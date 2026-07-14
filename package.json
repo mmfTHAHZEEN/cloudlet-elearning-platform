@@ -1,0 +1,26 @@
+{
+  "name": "elearning-api",
+  "version": "1.0.0",
+  "description": "Cloud-native REST API for the E-Learning Platform (courses, enrollments, quizzes)",
+  "main": "local.js",
+  "scripts": {
+    "start": "node local.js",
+    "dev": "node local.js",
+    "deploy": "serverless deploy",
+    "test:load": "node loadtest.js"
+  },
+  "dependencies": {
+    "@aws-sdk/client-s3": "^3.1085.0",
+    "@aws-sdk/s3-request-presigner": "^3.1085.0",
+    "bcryptjs": "^2.4.3",
+    "cors": "^2.8.5",
+    "dotenv": "^16.4.5",
+    "express": "^4.19.2",
+    "jsonwebtoken": "^9.0.2",
+    "serverless-http": "^3.2.0",
+    "uuid": "^9.0.1"
+  },
+  "devDependencies": {
+    "serverless": "^3.39.0"
+  }
+}
