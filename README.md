@@ -9,9 +9,6 @@ assessments — implemented as a REST API + static frontend, architected for AWS
 deployment (Lambda, API Gateway, DynamoDB, S3), and live-deployed on free-tier hosting
 for demonstration.
 
-**Live API:** `<paste your Railway URL here>`
-**Live site:** `<paste your Netlify URL here>`
-
 ---
 
 ## Group Members
